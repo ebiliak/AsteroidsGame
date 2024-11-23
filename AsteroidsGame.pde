@@ -4,7 +4,7 @@ Star[] stars;
 void setup() {
   size(800, 800);
   spaceship = new Spaceship();
-  stars = new Star[100]; // Create 100 stars
+  stars = new Star[100]; 
   for (int i = 0; i < stars.length; i++) {
     stars[i] = new Star();
   }
@@ -26,11 +26,14 @@ void keyPressed() {
     if (keyCode == LEFT) {
       spaceship.turn(-5); 
     } else if (keyCode == RIGHT) {
-      spaceship.turn(5);
+      spaceship.turn(5); 
     } else if (keyCode == UP) {
       spaceship.accelerate(0.1); 
+    } else if (keyCode == DOWN) {
+      spaceship.decelerate(0.05); 
     }
   } else if (key == 'h' || key == 'H') {
-    spaceship.hyperspace();
+    spaceship.hyperspace(); 
   }
+
 }
