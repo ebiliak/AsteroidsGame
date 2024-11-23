@@ -1,15 +1,18 @@
 class Star {
-  private float x, y;
-  private int brightness;
-  
-  Star() {
-    x = (float)(Math.random() * width);
-    y = (float)(Math.random() * height);
-    brightness = (int)(Math.random() * 255);
+  private double x, y; 
+  private int starColor;
+
+  // Constructor
+  public Star() {
+    x = Math.random() * width; 
+    y = Math.random() * height;
+    starColor = color(255, 255, 255); 
   }
 
-  void show() {
-    stroke(brightness);
-    point(x, y);
+  
+  public void show() {
+    fill(starColor);
+    noStroke();
+    ellipse((float)x, (float)y, 2, 2);
   }
 }
