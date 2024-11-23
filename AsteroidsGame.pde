@@ -1,23 +1,36 @@
-class Spaceship extends Floater {
+Spaceship spaceship;
+Star[] stars;
 
-  public Spaceship() {
-    corners = 3; 
-    xCorners = new int[] { -10, 20, -10 };
-    yCorners = new int[] { -10, 0, 10 }; 
-    myColor = color(255, 255, 255); 
-    myCenterX = width / 2;
-    myCenterY = height / 2; 
-    myXspeed = 0; 
-    myYspeed = 0; 
-    myPointDirection = 0;
+void setup() {
+  size(800, 800);
+  spaceship = new Spaceship();
+  stars = new Star[100]; // Create 100 stars
+  for (int i = 0; i < stars.length; i++) {
+    stars[i] = new Star();
+  }
+}
+
+void draw() {
+  background(0); // Black background
+
+  for (Star star : stars) {
+    star.show();
   }
 
+  spaceship.show();
+  spaceship.move();
+}
 
-  public void hyperspace() {
-    myCenterX = Math.random() * width;
-    myCenterY = Math.random() * height;
-    myXspeed = 0;
-    myYspeed = 0;
-    myPointDirection = Math.random() * 360; 
+void keyPressed() {
+  if (key == CODED) {
+    if (keyCode == LEFT) {
+      spaceship.turn(-5); 
+    } else if (keyCode == RIGHT) {
+      spaceship.turn(5);
+    } else if (keyCode == UP) {
+      spaceship.accelerate(0.1); 
+    }
+  } else if (key == 'h' || key == 'H') {
+    spaceship.hyperspace();
   }
 }
