@@ -1,5 +1,3 @@
-// AsteroidsGame.pde
-
 ArrayList<Asteroid> asteroids = new ArrayList<Asteroid>();
 ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 Spaceship spaceship;
@@ -65,10 +63,8 @@ void draw() {
   // **Collision check**: Spaceship hit asteroid
   for (int i = asteroids.size() - 1; i >= 0; i--) {
     Asteroid a = asteroids.get(i);
-    // Calculate distance between spaceship and asteroid
     float d = dist((float)spaceship.getCenterX(), (float)spaceship.getCenterY(), (float)a.getCenterX(), (float)a.getCenterY());
     
-    // If distance is less than sum of spaceship's size (roughly 10px) and asteroid's radius
     if (d < a.getSize() / 2 + 10) { // Spaceship hits asteroid
       asteroids.remove(i); // Remove asteroid on collision
       break;  // Exit the loop to avoid modifying the list while iterating
@@ -90,7 +86,6 @@ void keyPressed() {
   } else if (key == 'h' || key == 'H') {
     spaceship.hyperspace(); 
   } else if (key == ' ') {
-    // Shoot a bullet
-    bullets.add(new Bullet(spaceship));
+    bullets.add(new Bullet(spaceship)); // Shoot a bullet
   }
 }
